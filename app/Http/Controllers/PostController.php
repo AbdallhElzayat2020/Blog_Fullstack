@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    /** * Display a listing of the resource. */
+    public function index(Request $request)
     {
-        //
+        $fileName = time().'_'.$request->image->getClientOriginalName();
+        $file_Path = $request->image->storeAs('uploads', $fileName);
     }
 
     /**

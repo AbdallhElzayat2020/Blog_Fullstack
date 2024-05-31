@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/sendemail', function () {
+    Mail::raw('hello world from Laravel here', function ($message) {
+        $message->to('admin@gmail.com')->subject('noreplay');
+    });
+    dd('success');
 });
